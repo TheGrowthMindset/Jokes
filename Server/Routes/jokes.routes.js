@@ -4,12 +4,12 @@ module.exports = app => {
 
     app.get("/api/jokes", JokeController.findAllJokes);
 
-    app.get("/api/jokes/:_id", JokeController.findOneJoke);
+    app.get("/api/jokes/:id", JokeController.findOneJoke);
 
     app.post("/api/jokes/create", JokeController.createJoke);
 
-    app.put("/api/jokes/update/:_id", JokeController.updateJoke);
+    app.put("/api/jokes/update/:id", JokeController.updateJoke);
 
-    app.delete("/api/jokes/delete/:_id", JokeController.deleteJoke);
+    app.delete("/api/jokes/delete/:id", JokeController.deleteJoke);
 }
 

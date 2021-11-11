@@ -9,7 +9,7 @@ module.exports.findAllJokes = (request, response) => {
 
 //showing One joke
 module.exports.findOneJoke = (request, response) => {
-    Joke.find({_id: req.params._id})
+    Joke.find({id: request.params.id})
     .then(oneJoke => response.json(oneJoke))
     .catch(error => response.json({message: "Something went wrong while showing one joke", error: error}))
 }
@@ -23,14 +23,14 @@ module.exports.createJoke = (request, response) => {
 
 // updating a Joke 
 module.exports.updateJoke = (request, response) => {
-    Joke.findOneAndUpdate({_id: req.params._id}, req.body)
-        .then(updatedJoke => res.json(updatedJoke))
-        .catch(error => res.json({message: "Something went wrong while updating a joke", error: error}))
+    Joke.findOneAndUpdate({id: request.params.id}, request.body)
+        .then(updatedJoke => response.json(updatedJoke))
+        .catch(error => response.json({message: "Something went wrong while updating a joke", error: error}))
 }
 
 //deleting a joke 
 module.exports.deleteJoke = (req, res) => {
-    Joke.deleteOne({_id: req.params._id})
+    Joke.deleteOne({id: req.params.id})
         .then(deletedJoke => res.json(deletedJoke))
         .catch(err => res.json({message: "Something went wrong while deleting a joke", err: err}))
 }
